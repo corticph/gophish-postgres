@@ -18,8 +18,8 @@ import (
 
 	log "github.com/gophish/gophish/logger"
 	"github.com/jinzhu/gorm"
-	_ "github.com/lib/pq"              // Blank import needed to import postgres
-	_ "github.com/mattn/go-sqlite3"    // Blank import needed to import sqlite3
+	_ "github.com/lib/pq"           // Blank import needed to import postgres
+	_ "github.com/mattn/go-sqlite3" // Blank import needed to import sqlite3
 )
 
 var db *gorm.DB
