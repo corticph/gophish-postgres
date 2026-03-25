@@ -39,9 +39,12 @@ VALUES
 -- * OR the first user, if no `admin` user exists
 UPDATE users SET role_id = (
     SELECT id FROM roles WHERE slug='admin')
-WHERE username='admin'
-    OR id = (SELECT MIN(id) FROM users)
-LIMIT 1;
+WHERE id IN (
+    SELECT id FROM users
+    WHERE username='admin'
+        OR id = (SELECT MIN(id) FROM users)
+    LIMIT 1
+);
 
 -- Every other user will be considered a standard user account. The admin user
 -- will be able to change the role of any other user at any time.
